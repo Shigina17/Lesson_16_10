@@ -383,7 +383,7 @@ namespace Lesson_16_10
             private Checks check = new Checks();
             private Dictionary<string, Classmate> studentList = new Dictionary<string,
             Classmate>();
-            private string pathToFile = "C:/Users/lokey/source/repos/RinatKuchaev09_10_2021/RinatKuchaev09_10_2021/ClassWorkFiles/students.txt";
+            private string pathToFile = "C:/Users/lokey/source/reposhttShigina17/Lesson_16_10/blob/master/Lesson_16_10/file_students";
 
             private void setFileStudents()
             {
