@@ -250,14 +250,3 @@ namespace HomeworkTM_16_10
         }
     }
 }
-
-    
-
-
-            
-        
-    
-
-        
-    
-

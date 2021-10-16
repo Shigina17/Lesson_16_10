@@ -12,7 +12,7 @@ namespace HomeworkFile_16_10
         static void Main(string[] args)
         {
                 Console.WriteLine("Задание 1");
-                string path = Path.GetFullPath(@"resource\decoder.txt");
+                string path = Path.GetFullPath("");
                 string file = "";
                 using (StreamReader sr = new StreamReader(path))
                 {
@@ -72,7 +72,3 @@ namespace HomeworkFile_16_10
             }
         }
     }
-
-        
-    
-
