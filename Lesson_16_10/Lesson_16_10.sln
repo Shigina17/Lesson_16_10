@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeworkFile_16_10", "..\Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeworkTM_16_10", "..\HomeworkTM_16_10\HomeworkTM_16_10.csproj", "{77874B3A-DFAF-456C-A63A-C27A7014863C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "resourse", "resourse", "{D9DA7EE9-BD33-479F-A2CE-C8C3EA36D595}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
