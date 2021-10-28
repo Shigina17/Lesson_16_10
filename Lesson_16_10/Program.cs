@@ -14,8 +14,8 @@ namespace Lesson_16_10
         private bool isCryingInTheStreet;
         private bool withoutDisease;
         private string allInfo;
-            public Grandmother(string userName, string userDrugs, byte userAge)
-            {
+        public Grandmother(string userName, byte userAge)
+        {
             name = userName;
             age = userAge;
             disease = new List<string>();
@@ -23,39 +23,39 @@ namespace Lesson_16_10
             isCryingInTheStreet = true;
             withoutDisease = true;
             allInfo = "";
-            }
-    
-    public void setDisease(string[] userDisease)
-    {
-        if (userDisease.Length != 1 && userDisease[0] != "Нет")
+        }
+
+        public void setDisease(string[] userDisease)
         {
-            for (int i = 0; i < userDisease.Length; i++)
+            if (userDisease.Length != 1 && userDisease[0] != "Нет")
             {
-                withoutDisease = false;
-                disease.Add(userDisease[i]);
+                for (int i = 0; i < userDisease.Length; i++)
+                {
+                    withoutDisease = false;
+                    disease.Add(userDisease[i]);
+                }
             }
         }
-    }
-    public void setDrugs(string[] userDrugs)
-    {
-        for (int i = 0; i < userDrugs.Length; i++)
+        public void setDrugs(string[] userDrugs)
         {
-            drugs.Add(userDrugs[i]);
+            for (int i = 0; i < userDrugs.Length; i++)
+            {
+                drugs.Add(userDrugs[i]);
+            }
         }
-    }
-    public void setIsCryingInTheStreet()
-    {
-        isCryingInTheStreet = false;
-    }
-    public List<string> getDisease()
-    {
-        return disease;
-    }
-    public void addDisease(string userDisease)
-    {
-        withoutDisease = false;
-        disease.Add(userDisease);
-    }
+        public void setIsCryingInTheStreet()
+        {
+            isCryingInTheStreet = false;
+        }
+        public List<string> getDisease()
+        {
+            return disease;
+        }
+        public void addDisease(string userDisease)
+        {
+            withoutDisease = false;
+            disease.Add(userDisease);
+        }
         public List<string> getDrugs()
         {
             return drugs;
@@ -153,9 +153,9 @@ namespace Lesson_16_10
             //Для инициализации всех объектов
             surname = userSurname;
             name = userName;
-            yearOfBirth = Convert.ToInt32(userYearOfBirth);
+            yearOfBirth = System.Convert.ToInt32(userYearOfBirth);
             exams = userExams;
-            examPoint = Convert.ToByte(userExamPoint);
+            examPoint = System.Convert.ToByte(userExamPoint);
             allInfoInString = surname + " " + name + " " + yearOfBirth + " " + exams + " " + examPoint;
         }
         public string getSurname()
@@ -187,21 +187,20 @@ namespace Lesson_16_10
 
     struct Employee
     {
-        private Checkes check;
+        private Convert check;
         private string name;
         private string position;
         private byte degreeOfInsolence;
         private bool isStupid;
         private List<Employee> familiars;
-        public Employee(string
-        userName, string userPosition, byte userDegreeOfInsolence, bool userIsStupid)
+        public Employee(string userName, string userPosition, byte userDegreeOfInsolence, bool userIsStupid)
         {
             name = userName;
             position = userPosition;
             degreeOfInsolence = userDegreeOfInsolence;
             isStupid = userIsStupid;
             familiars = new List<Employee>();
-            check = new Checks();
+            check = new Convert();
         }
         public void setReadyFamiliars(Employee[] userFamiliars)
         {
@@ -266,10 +265,14 @@ namespace Lesson_16_10
         {
             countOfPlaces = 0;
             employeesAtTheTable = new List<Employee>();
+            employeesAtTheTable.Add(new Employee("", "", 0, false));
+            employeesAtTheTable.Add(new Employee("", "", 0, false));
+            employeesAtTheTable.Add(new Employee("", "", 0, false));
+            employeesAtTheTable.Add(new Employee("", "", 0, false));
         }
         public bool addEmployeeAtTheTable(Employee person)
         {
-            if (employeesAtTheTable[0].getName() == null)
+            if (employeesAtTheTable[0].getName() == "")
             {
                 Console.WriteLine(person.getName());
                 employeesAtTheTable.Add(person);
@@ -280,13 +283,13 @@ namespace Lesson_16_10
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (employeesAtTheTable[i].getName() != null && !person.getIsStupid())
+                    if (employeesAtTheTable[i].getName() != "" && !person.getIsStupid())
                     {
                         employeesAtTheTable.Add(person);
                         return true;
                     }
                 }
-                if (person.getDegreeOfInsolence() > 0 && employeesAtTheTable[3].getName() != null && !person.getIsStupid())
+                if (person.getDegreeOfInsolence() > 0 && employeesAtTheTable[3].getName() != "" && !person.getIsStupid())
                 {
                     employeesAtTheTable.Add(person);
                 }
@@ -295,13 +298,13 @@ namespace Lesson_16_10
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (employeesAtTheTable[i].getName() != null && !person.getIsStupid())
+                    if (employeesAtTheTable[i].getName() != "" && !person.getIsStupid())
                     {
                         employeesAtTheTable.Add(person);
                         return true;
                     }
                 }
-                if (person.getDegreeOfInsolence() > 0 && employeesAtTheTable[3].getName() != null)
+                if (person.getDegreeOfInsolence() > 0 && employeesAtTheTable[3].getName() != "")
                 {
                     employeesAtTheTable[3] = person;
                 }
@@ -312,11 +315,7 @@ namespace Lesson_16_10
         {
             return employeesAtTheTable;
         }
-
-                static void Main(string[] args)
-                {
-                Console.WriteLine("Задание 1");
-                class Ex1
+        class Ex1
         {
             public void doEx1()
             {
@@ -380,10 +379,9 @@ namespace Lesson_16_10
         }
         class Ex3
         {
-            private Checks check = new Checks();
-            private Dictionary<string, Classmate> studentList = new Dictionary<string,
-            Classmate>();
-            private string pathToFile = "";
+            private Convert check = new Convert();
+            private Dictionary<string, Classmate> studentList = new Dictionary<string, Classmate>();
+            private string pathToFile = @".\..\..\resources\students.txt";
 
             private void setFileStudents()
             {
@@ -419,7 +417,7 @@ namespace Lesson_16_10
                     studentList.Add(student.getSurname() + " " + student.getName(), student);
                 }
             }
-            private string inputUserInformationAboutStudent()
+            private string InputUserInformationAboutStudent()
             {
                 string information = "";
                 Console.WriteLine("Введите фамилию:");
@@ -437,7 +435,7 @@ namespace Lesson_16_10
 
             private void addStudentToListAndFile()
             {
-                string informationAboutStudent = inputUserInformationAboutStudent();
+                string informationAboutStudent = InputUserInformationAboutStudent();
                 File.AppendAllText(pathToFile, informationAboutStudent);
                 string[] massiveInformationAboutStudent = informationAboutStudent.Split(' ');
                 Classmate student = new Classmate(massiveInformationAboutStudent[0], massiveInformationAboutStudent[1], massiveInformationAboutStudent[2], massiveInformationAboutStudent[3], massiveInformationAboutStudent[4]);
@@ -456,7 +454,6 @@ namespace Lesson_16_10
                     {
                         informationAboutAllStudents += student.Value.getAllInfoInStrig() + "\n";
                     }
-
                 }
                 Console.WriteLine(informationAboutAllStudents);
                 File.WriteAllText(pathToFile, informationAboutAllStudents);
@@ -501,7 +498,7 @@ namespace Lesson_16_10
         }
         class Ex4
         {
-            private Checks check = new Checks();
+            private Convert check = new Convert();
             private Queue<Employee> employeesQueue = new Queue<Employee>();
             private Stack<Table>
             tablesStack = new Stack<Table>();
@@ -591,7 +588,7 @@ namespace Lesson_16_10
                 countOfTable = check.CheckTheIntNumber();
                 for (int i = 0; i < countOfTable; i++)
                 {
-                    tablesStack.Push(new Table());
+                    tablesStack.Push(new Table(true));
                 }
             }
             private void sortTablesStack()
@@ -672,8 +669,8 @@ namespace Lesson_16_10
         }
         class Ex5
         {
-            private string pathToGrandma = "";
-            private string patToHospital = "";
+            private string pathToGrandma = @".\..\..\resources\grandma.txt";
+            private string pathToHospital = @".\..\..\resources\hospitals.txt";
             private Queue<Grandmother> grandmaQueue = new Queue<Grandmother>();
             private Stack<Hospital> hospitals = new Stack<Hospital>();
             private int countOfElementInGrandmaQueue = 0;
@@ -684,7 +681,7 @@ namespace Lesson_16_10
                 for (int i = 0; i < informationAboutGrandma.Length; i += 3)
                 {
                     string[] infoAboutGrandma = informationAboutGrandma[i].Split(' ');
-                    grandma = new Grandma(infoAboutGrandma[0], Convert.ToByte(infoAboutGrandma[1]));
+                    grandma = new Grandmother(infoAboutGrandma[0], System.Convert.ToByte(infoAboutGrandma[1]));
                     infoAboutGrandma = informationAboutGrandma[i + 1].Split(' ');
                     grandma.setDisease(infoAboutGrandma);
                     infoAboutGrandma = informationAboutGrandma[i + 2].Split(' ');
@@ -695,13 +692,13 @@ namespace Lesson_16_10
             }
             private void setHospitalsFromFile()
             {
-                string[] informationAboutHospital = File.ReadAllLines(patToHospital);
+                string[] informationAboutHospital = File.ReadAllLines(pathToHospital);
                 Hospital hospital;
                 for (int i = 0; i < informationAboutHospital.Length - 1; i += 3)
                 {
                     string hospitalTitle = informationAboutHospital[i];
                     string[] hospitalTreatableDiseases = informationAboutHospital[i + 1].Split(' ');
-                    int hospitalCapacity = Convert.ToInt32(informationAboutHospital[i + 2]);
+                    int hospitalCapacity = System.Convert.ToInt32(informationAboutHospital[i + 2]);
                     hospital = new Hospital(hospitalTitle, hospitalCapacity);
                     hospital.setTreatableDiseases(hospitalTreatableDiseases);
                     hospitals.Push(hospital);
@@ -777,7 +774,7 @@ namespace Lesson_16_10
         }
         class ClassWork
         {
-            private static Checks check = new Checks();
+            private static Convert check = new Convert();
             static void Main(string[] args)
             {
                 Console.WriteLine("Введите номер задания");
