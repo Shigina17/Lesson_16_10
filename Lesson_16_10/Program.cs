@@ -761,7 +761,6 @@ namespace Lesson_16_10
                 setGrandmaFromFile();
                 setHospitalsFromFile();
                 DistributionOfGrandma();
-
                 foreach (Hospital hospital in hospitals)
                 {
                     Console.WriteLine(hospital.getTitle() + ":");
